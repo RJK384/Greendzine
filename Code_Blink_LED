@@ -1,0 +1,46 @@
+//Writtn by Rahul JK
+#define LM35 A0
+
+void setup() {
+  pinMode(LED_BUILTIN,OUTPUT);
+}
+
+void loop() {
+
+  //Read the analong value from the pin A0
+  float lmvalue = analogRead(LM35)*(5000.0/1024.0);
+  //Convert the analog value to Temperature in Celcius
+  float temp = lmvalue/10;
+  
+  if (temp<=30 && temp>0) 
+  { //If the temperature is less than 30'C, LED must blink every 250 mSec
+    digitalWrite(LED_BUILTIN,HIGH);
+    del(); //Member Function del() is called
+    digitalWrite(LED_BUILTIN,LOW);
+    del();
+  }
+  else if (temp>30)
+  { //If the temperature is more than 30'C, LED must blink every 500 mSec
+    digitalWrite(LED_BUILTIN,HIGH);
+    del();
+    del();
+    digitalWrite(LED_BUILTIN,LOW);
+    del();
+    del();
+  }
+}
+
+  
+  void del()
+  {
+
+    //This function provides a delay of seconds
+    unsigned long time;
+    unsigned long maxtime = 4000000UL;
+
+    for(time=0UL;time<maxtime;time++)
+    {
+      time=time;
+    }
+
+  }
